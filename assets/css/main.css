@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('~assets/fonts/SourceSansPro-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url('~assets/fonts/SourceSansPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 900;
+  src: url('~assets/fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+:root {
+  --back-color: #ffffff;
+  --pattern-color: #909090;
+  --contrast-color: #8e36b7;
+  --back-secondary: #bbbbbb;
+  --line-color: #aaaaaa;
+  --title-color: #434343;
+  --button-color: #cfcfcf;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
