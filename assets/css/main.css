@@ -27,6 +27,9 @@
   --line-color: #aaaaaa;
   --title-color: #434343;
   --button-color: #cfcfcf;
+  --alternative-color: #368eb7;
+  --gradient-purple: #d693f6;
+  --gradient-blue: #93f4f5;
 }
 
 * {
