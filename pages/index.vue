@@ -2,9 +2,9 @@
   <div class="home-page">
     <HeaderComponent />
     <main>
-      <BannerComponent />
+      <RotatingBanner />
       <SearchBar />
-      <ProductsGrid :products="products" />
+      <ProductsGrid :products="search(products, searchTerm, 'name')" />
     </main>
     <FooterComponent />
   </div>
@@ -12,18 +12,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Product } from '@/models'
 
 export default Vue.extend({
   name: 'IndexPage',
   async asyncData({ $axios }) {
     const products = await $axios.$get('/produtos.json')
     return { products }
-  },
-  data() {
-    return {
-      products: [] as Product[],
-    }
   },
   head() {
     return {
@@ -36,6 +30,19 @@ export default Vue.extend({
         },
       ],
     }
+  },
+  computed: {
+    searchTerm() {
+      return this.$store.state.shop.inputs.searchTerm
+    },
+  },
+  methods: {
+    search(list: Array<any>, input: string, key: string) {
+      if (input === '') return list
+      return list.filter((item) => {
+        return item[key].toLowerCase().includes(input.toLowerCase())
+      })
+    },
   },
 })
 </script>
