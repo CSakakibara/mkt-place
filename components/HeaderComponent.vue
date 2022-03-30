@@ -35,7 +35,7 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 export default Vue.extend({
   computed: {
-    ...mapGetters({ totalQuantity: 'shop/cartStore/totalQuantity' }),
+    ...mapGetters({ totalQuantity: 'shop/cart/totalQuantity' }),
   },
 })
 </script>
@@ -60,8 +60,9 @@ aside {
       li {
         padding: 0 1rem 0 1rem;
 
-        &.shopping-cart {
-          margin: 0 auto;
+        .shopping-cart {
+          max-height: 4.5rem;
+          max-width: 7.5rem;
         }
 
         &:hover {

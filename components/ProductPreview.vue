@@ -31,10 +31,10 @@ import Vue from 'vue'
 import { mapMutations } from 'vuex'
 export default Vue.extend({
   props: {
-    product: { type: Array, required: true },
+    product: { type: Object, required: true },
   },
   methods: {
-    ...mapMutations({ addItem: 'shop/cartStore/addItem' }),
+    ...mapMutations({ addItem: 'shop/cart/addItem' }),
   },
 })
 </script>

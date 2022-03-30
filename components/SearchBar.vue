@@ -8,14 +8,35 @@
           type="search"
           name="search-input"
           placeholder="Pesquisar..."
+          @keyup.enter="setSearch"
         />
-        <button class="search-button">
+        <button class="search-button" @click="setSearch">
           <img width="24" height="24" src="/search-icon.svg" />
         </button>
       </div>
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { mapMutations } from 'vuex'
+
+export default Vue.extend({
+  methods: {
+    ...mapMutations({
+      setSearchTerm: 'shop/inputs/setSearchTerm',
+    }),
+    setSearch() {
+      const inputElement = document.querySelector(
+        '.search-input'
+      ) as HTMLInputElement
+
+      if (inputElement) this.setSearchTerm(inputElement.value)
+    },
+  },
+})
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -37,6 +58,9 @@ label {
 }
 .search {
   position: relative;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .search-input {
   height: 4.6rem;
@@ -52,9 +76,5 @@ label {
   background: var(--contrast-color);
   right: 0;
   border-radius: 3px;
-
-  &:hover {
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1));
-  }
 }
 </style>

@@ -115,7 +115,7 @@
         <NuxtLink to="/" class="col-3 offset-4">
           <button class="back" type="button">Continuar comprando</button>
         </NuxtLink>
-        <NuxtLink to="/checkout" class="col-3">
+        <NuxtLink to="/checkoutPage" class="col-3">
           <button class="checkout" type="button">Concluir compra</button>
         </NuxtLink>
       </div>
@@ -129,19 +129,19 @@ import { mapGetters, mapMutations } from 'vuex'
 export default Vue.extend({
   computed: {
     cartItems() {
-      return this.$store.state.shop.cartStore.cartItems
+      return this.$store.state.shop.cart.cartItems
     },
     ...mapGetters({
-      totalPrice: 'shop/cartStore/totalPrice',
-      financedTotalPrice: 'shop/cartStore/financedTotalPrice',
+      totalPrice: 'shop/cart/totalPrice',
+      financedTotalPrice: 'shop/cart/financedTotalPrice',
     }),
   },
   methods: {
     ...mapMutations({
-      removeItem: 'shop/cartStore/removeItem',
-      addItem: 'shop/cartStore/addItem',
-      subtractItem: 'shop/cartStore/subtractItem',
-      removeAll: 'shop/cartStore/removeAll',
+      removeItem: 'shop/cart/removeItem',
+      addItem: 'shop/cart/addItem',
+      subtractItem: 'shop/cart/subtractItem',
+      removeAll: 'shop/cart/removeAll',
     }),
   },
 })
