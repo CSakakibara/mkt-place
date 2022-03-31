@@ -110,11 +110,6 @@
           type="text"
           name="state"
           maxlength="2"
-          @input="
-            () => {
-              state = state.toUpperCase()
-            }
-          "
         />
       </div>
       <div class="col-xl-4 col-lg-6 col-md-12 offset-8 button-container">
@@ -169,6 +164,7 @@ export default Vue.extend({
       if(!newResponse) return
       if(newResponse === oldResponse) return
       this.address = newResponse.logradouro
+      this.complement = newResponse.complemento
       this.district = newResponse.bairro
       this.city = newResponse.localidade
       this.state = newResponse.uf
@@ -191,6 +187,9 @@ export default Vue.extend({
         .replace(/(\d{2})(\d)/, '($1)$2')
         .replace(/(\d{5})(\d)/, '$1-$2')
         .replace(/(-\d{4})\d+?$/, '$1')
+    },
+    state(newState){
+      this.state = newState.toUpperCase()
     }
   },
   methods: {

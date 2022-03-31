@@ -1,8 +1,3 @@
-export const state = () => ({
-  searchTerm: '',
-  bannersIndex: 0,
-})
-
 export const mutations = {
   setSearchTerm(state, text) {
     state.searchTerm = text
@@ -19,3 +14,8 @@ export const mutations = {
     state.bannersIndex = position
   },
 }
+
+export const state = () => ({
+  searchTerm: '',
+  bannersIndex: 0,
+})

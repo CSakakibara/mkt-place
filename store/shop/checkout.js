@@ -1,7 +1,3 @@
-export const state = () => ({
-  success: false,
-})
-
 export const mutations = {
   openSuccess(state) {
     state.success = true
@@ -10,3 +6,7 @@ export const mutations = {
     state.success = false
   },
 }
+
+export const state = () => ({
+  success: false,
+})
