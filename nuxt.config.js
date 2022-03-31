@@ -49,9 +49,13 @@ export default {
 
   // Pwa module configuration
   pwa: {
-    icon: {
-      purpose: 'any',
+    manifest: {
+      theme_color: '#ffffff',
     },
+    icon: {
+      purpose: 'maskable',
+    },
+    description: 'Simple e-commerce page',
   },
 
   // Environment

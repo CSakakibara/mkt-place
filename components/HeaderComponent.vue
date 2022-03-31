@@ -6,6 +6,8 @@
           <h1>
             <NuxtLink to="/"
               ><img
+                width="143"
+                height="25"
                 alt="logomarca Mkt Place com cores roxo e cinza"
                 src="/logo.svg"
             /></NuxtLink>
@@ -20,6 +22,8 @@
               alt="Ícone de carrinho de compras"
               class="col shopping-cart"
               src="/shopping-cart.svg"
+              width="75"
+              height="45"
             />
             <div v-if="totalQuantity" class="counter">
               <span>{{ totalQuantity }}</span>

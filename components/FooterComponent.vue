@@ -1,7 +1,12 @@
 <template>
   <footer>
     <div class="container">
-      <img alt="logomarca cinza: Mkt Place" src="/footer-logo.svg" />
+      <img
+        width="143"
+        height="25"
+        alt="logomarca cinza: Mkt Place"
+        src="/footer-logo.svg"
+      />
     </div>
   </footer>
 </template>

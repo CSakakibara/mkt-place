@@ -11,7 +11,12 @@
           @keyup.enter="setSearch"
         />
         <button class="search-button" @click="setSearch">
-          <img width="24" height="24" src="/search-icon.svg" />
+          <img
+            alt="Ícone de lupa para simbolizar pesquisa"
+            width="24"
+            height="24"
+            src="/search-icon.svg"
+          />
         </button>
       </div>
     </div>

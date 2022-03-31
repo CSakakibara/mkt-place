@@ -16,7 +16,12 @@
               type="button"
               @click="removeItem(item)"
             >
-              <img src="/trash-icon.svg" alt="Ícone de lixeira" />
+              <img
+                width="17"
+                height="21"
+                src="/trash-icon.svg"
+                alt="Ícone de lixeira"
+              />
             </button>
             <div class="products-label">
               <span class="category">{{ item.category }}</span>
@@ -114,7 +119,12 @@
       <div class="buttons-container container row">
         <div class="col-xl-2 col-lg-3">
           <button class="clean" type="button" @click="removeAll()">
-            <img src="/trash-icon.svg" alt="Ícone de lixeira" />Limpar carrinho
+            <img
+              width="27"
+              height="21"
+              src="/trash-icon.svg"
+              alt="Ícone de lixeira"
+            />Limpar carrinho
           </button>
         </div>
         <NuxtLink to="/" class="col-xl-3 offset-xl-4 col-lg-3 offset-lg-3">

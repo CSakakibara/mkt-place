@@ -10,12 +10,16 @@
               class="indicator active"
             >
               <img
+                width="16"
+                height="16"
                 alt="Ponto que representa qual o banner que está sendo exibido"
                 src="/active-indicator.svg"
               />
             </button>
             <button v-else class="indicator" @click="changeBanner(counter - 1)">
               <img
+                width="16"
+                height="16"
                 alt="Ponto que representa banner que não está sendo exibido"
                 src="/inactive-indicator.svg"
               />
