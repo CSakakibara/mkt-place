@@ -10,19 +10,21 @@ Importação das fontes, criação das variáveis, declaração de estilos globa
 ```
 HeaderComponent.vue
 ```
-CSF de cabeçalho, contendo a logo e a navegação para as páginas de Produtos e do Carrinho utilizando NuxtLink. 
-Em conjunto ao ícone do carrinho possui um elemento com renderização condicional com label dinâmica que se 
-baseiam em um getter que é computado calculando a quantidade de items que há no estado de items do carrinho.
+CSF de cabeçalho, contendo a logo e a navegação para as páginas de Produtos e do Carrinho utilizando 
+NuxtLink. Em conjunto ao ícone do carrinho possui um elemento com renderização condicional com label 
+dinâmica que se baseiam em um getter que é computado calculando a quantidade de items que há no 
+estado de items do carrinho.
 
-Neste arquivo também é declarado um observador com a flag deep para salvar alterações do carrinho no local 
-storage mesmo quando apenas uma propriedade da lista é alterada(nesse caso a quantidade). Quando o componente 
-é montado caso o estado de items do carrinho esteja vazio, é restaurado do local storage.
+Neste arquivo também é declarado um observador com a flag deep para salvar alterações do carrinho no
+local storage mesmo quando apenas uma propriedade da lista é alterada(nesse caso a quantidade). 
+Quando o componente é montado caso o estado de items do carrinho esteja vazio, é restaurado do local
+storage.
 
-A logo e o link do carrinho possuem efeito de hover diminuindo a opacidade, o link da página de produtos 
-altera sua cor.
+A logo e o link do carrinho possuem efeito de hover diminuindo a opacidade, o link da página de 
+produtos altera sua cor.
 
-O tamanho relativo das colunas são alterados de acordo com o tamanho do viewport para adequar uma melhor 
-visualização.
+O tamanho relativo das colunas são alterados de acordo com o tamanho do viewport para adequar uma 
+melhor visualização.
 ```
 FooterComponent.vue
 ```
