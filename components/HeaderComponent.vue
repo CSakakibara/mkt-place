@@ -2,18 +2,19 @@
   <aside>
     <nav class="container">
       <ul class="row align-items-center">
-        <li class="col-xl-2 col-lg-8 col-md-6 col-sm-4 col-4">
+        <li class="col-xl-2 col-lg-8 col-md-8 col-sm-7 col-7">
           <h1>
-            <img
-              alt="logomarca Mkt Place com cores roxo e cinza"
-              src="/logo.svg"
-            />
+            <NuxtLink to="/"
+              ><img
+                alt="logomarca Mkt Place com cores roxo e cinza"
+                src="/logo.svg"
+            /></NuxtLink>
           </h1>
         </li>
-        <li class="col-xl offset-xl-8 col-lg-2 col-md-3 col-sm-4 col-4">
+        <li class="col-xl offset-xl-8 col-lg-2 col-md-2 col-sm-2 col-2">
           <NuxtLink to="/"> Produtos </NuxtLink>
         </li>
-        <li class="col-xl col-lg-2 col-md-3 col-sm-4 col-4">
+        <li class="col-xl col-lg-2 col-md-2 col-sm-3 col-3">
           <NuxtLink to="/shoppingCart" class="relative"
             ><img
               alt="Ícone de carrinho de compras"
@@ -118,6 +119,17 @@ aside {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 300px) {
+  aside {
+    .container {
+      ul {
+        a {
+          font-size: 1.4rem;
+        }
       }
     }
   }

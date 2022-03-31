@@ -1,7 +1,7 @@
 <template>
   <div class="container empty">
     <main>
-      <h2>Seu carrinho de compras da Mkt Place está vazio.</h2>
+      <h2 class="">Seu carrinho de compras da Mkt Place está vazio.</h2>
       <p>
         Seu carrinho de compras está aqui para servir a você. Dê um propósito a
         ele — preencha-o com comida, roupas, produtos domésticos, eletrônicos e
@@ -20,6 +20,14 @@
   }
   p {
     font-size: 3.6rem;
+  }
+  @media only screen and (max-width: 600px) {
+    h2 {
+      font-size: 4.2rem;
+    }
+    p {
+      font-size: 2rem;
+    }
   }
 }
 </style>

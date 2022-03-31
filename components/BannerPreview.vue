@@ -45,4 +45,14 @@ export default Vue.extend({
     font-size: 3.6rem;
   }
 }
+@media only screen and (max-width: 440px) {
+  .banner {
+    h2 {
+      font-size: 4.2rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+  }
+}
 </style>

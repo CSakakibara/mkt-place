@@ -47,5 +47,12 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
+  // Pwa module configuration
+  pwa: {
+    icon: {
+      purpose: 'any',
+    },
+  },
+
   // Environment
 }

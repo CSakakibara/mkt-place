@@ -112,7 +112,7 @@
           maxlength="2"
         />
       </div>
-      <div class="col-xl-4 col-lg-6 col-md-12 offset-8 button-container">
+      <div class="col-xl-4 offset-xl-8 col-lg-6 offset-lg-6  button-container">
         <button type="submit">Concluir Compra</button>
       </div>
     </form>
