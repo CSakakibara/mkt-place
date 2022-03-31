@@ -2,7 +2,7 @@
   <aside>
     <nav class="container">
       <ul class="row align-items-center">
-        <li class="col-2">
+        <li class="col-xl-2 col-lg-8 col-md-6 col-sm-4 col-4">
           <h1>
             <img
               alt="logomarca Mkt Place com cores roxo e cinza"
@@ -10,10 +10,10 @@
             />
           </h1>
         </li>
-        <li class="col offset-8">
+        <li class="col-xl offset-xl-8 col-lg-2 col-md-3 col-sm-4 col-4">
           <NuxtLink to="/"> Produtos </NuxtLink>
         </li>
-        <li class="col">
+        <li class="col-xl col-lg-2 col-md-3 col-sm-4 col-4">
           <NuxtLink to="/shoppingCart" class="relative"
             ><img
               alt="Ícone de carrinho de compras"

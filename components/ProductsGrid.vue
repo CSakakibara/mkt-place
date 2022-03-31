@@ -3,7 +3,11 @@
     <div class="container">
       <div class="products">
         <ul class="row">
-          <li v-for="product in products" :key="product.id" class="col-4">
+          <li
+            v-for="product in products"
+            :key="product.id"
+            class="col-lg-4 col-md-6 col-sm-12"
+          >
             <ProductPreview :product="product" />
           </li>
         </ul>

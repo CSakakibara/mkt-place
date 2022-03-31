@@ -49,7 +49,7 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   align-items: center;
-  gap: 5rem;
+  column-gap: 5rem;
 }
 label {
   font-weight: 700;

@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <form class="row" novalidate="true" @submit="checkForm">
-      <div class="field col-6">
+      <div class="field col-xl-6 col-lg-6 col-md-12">
         <label class="label" for="name">Nome*</label>
         <input id="name" v-model="name" class="input" type="text" name="name" />
       </div>
-      <div class="field col-6">
+      <div class="field col-xl-6 col-lg-6 col-md-12">
         <label class="label" for="postal">CEP*</label>
         <input
           id="postal"
@@ -16,7 +16,7 @@
           maxlength="9"
         />
       </div>
-      <div class="field col-6">
+      <div class="field col-xl-6 col-lg-6 col-md-12">
         <label class="label" for="email">E-mail*</label>
         <input
           id="email"
@@ -26,7 +26,7 @@
           name="email"
         />
       </div>
-      <div class="field col-4">
+      <div class="field col-xl-4 col-lg-6 col-md-12">
         <label class="label" for="address">Endereço*</label>
         <input
           id="address"
@@ -36,7 +36,7 @@
           name="address"
         />
       </div>
-      <div class="field col-2">
+      <div class="field col-xl-2 col-lg-6 col-md-12">
         <label class="label" for="number">Número*</label>
         <input
           id="number"
@@ -46,7 +46,7 @@
           name="number"
         />
       </div>
-      <div class="field col-6">
+      <div class="field col-xl-6 col-lg-6 col-md-12">
         <label class="label" for="cpf">CPF*</label>
         <input
           id="cpf"
@@ -56,7 +56,7 @@
           name="cpf"
         />
       </div>
-      <div class="field col-3">
+      <div class="field col-xl-3 col-lg-6 col-md-12">
         <label class="label" for="complement">Complemento</label>
         <input
           id="complement"
@@ -66,7 +66,7 @@
           name="complement"
         />
       </div>
-      <div class="field col-3">
+      <div class="field col-xl-3 col-lg-6 col-md-12">
         <label class="label" for="district">Bairro*</label>
         <input
           id="district"
@@ -76,7 +76,7 @@
           name="district"
         />
       </div>
-      <div class="field col-3">
+      <div class="field col-xl-3 col-lg-6 col-md-12">
         <label class="label" for="birthday">Data de Nascimento*</label>
         <input
           id="birthday"
@@ -87,7 +87,7 @@
           placeholder="dd/mm/yyyy"
         />
       </div>
-      <div class="field col-3">
+      <div class="field col-xl-3 col-lg-6 col-md-12">
         <label class="label" for="phone">Telefone*</label>
         <input
           id="phone"
@@ -97,11 +97,11 @@
           name="phone"
         />
       </div>
-      <div class="field col-4">
+      <div class="field col-xl-4 col-lg-6 col-md-12">
         <label class="label" for="city">Cidade*</label>
         <input id="city" v-model="city" class="input" type="text" name="city" />
       </div>
-      <div class="field col-2">
+      <div class="field col-xl-2 col-lg-6 col-md-12">
         <label class="label" for="state">Estado*</label>
         <input
           id="state"
@@ -117,7 +117,7 @@
           "
         />
       </div>
-      <div class="col-4 offset-8 button-container">
+      <div class="col-xl-4 col-lg-6 col-md-12 offset-8 button-container">
         <button type="submit">Concluir Compra</button>
       </div>
     </form>
