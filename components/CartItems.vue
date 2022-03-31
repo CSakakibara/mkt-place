@@ -74,8 +74,11 @@
         </li>
       </ul>
       <div class="row total">
-        <span id="total-label" class="col-2 offset-8">total à vista</span
-        ><span class="col-2 total-value">{{
+        <span
+          id="total-label"
+          class="col-xl-2 offset-xl-8 col-lg-4 offset-lg-5 col-md-5 offset-md-3 col-6"
+          >total à vista</span
+        ><span class="col-xl-2 col-lg-3 col-md-4 col-6 total-value">{{
           totalPrice.toLocaleString('pt-br', {
             style: 'currency',
             currency: 'BRL',
@@ -83,9 +86,11 @@
         }}</span>
       </div>
       <div class="row total total-installments">
-        <span id="installments-label" class="col-2 offset-8"
+        <span
+          id="installments-label"
+          class="col-xl-2 offset-xl-8 col-lg-4 offset-lg-5 col-md-5 offset-md-3 col-6"
           >total parcelado</span
-        ><span class="col-2"
+        ><span class="col-xl-2 col-lg-3 col-md-4 col-6"
           ><p>
             <span class="installments-advise">em até </span>10x R{{
               (financedTotalPrice / 10)
