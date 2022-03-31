@@ -10,13 +10,19 @@ Importação das fontes, criação das variáveis, declaração de estilos globa
 ```
 HeaderComponent.vue
 ```
-CSF de cabeçalho, contendo a logo e a navegação para as páginas de Produtos e do Carrinho utilizando NuxtLink. Em conjunto ao ícone do carrinho possui um elemento com renderização condicional com label dinâmica que se baseiam em um getter que é computado calculando a quantidade de items que há no estado de items do carrinho.
+CSF de cabeçalho, contendo a logo e a navegação para as páginas de Produtos e do Carrinho utilizando NuxtLink. 
+Em conjunto ao ícone do carrinho possui um elemento com renderização condicional com label dinâmica que se 
+baseiam em um getter que é computado calculando a quantidade de items que há no estado de items do carrinho.
 
-Neste arquivo também é declarado um observador com a flag deep para salvar alterações do carrinho no local storage mesmo quando apenas uma propriedade da lista é alterada(nesse caso a quantidade). Quando o componente é montado caso o estado de items do carrinho esteja vazio, é restaurado do local storage.
+Neste arquivo também é declarado um observador com a flag deep para salvar alterações do carrinho no local 
+storage mesmo quando apenas uma propriedade da lista é alterada(nesse caso a quantidade). Quando o componente 
+é montado caso o estado de items do carrinho esteja vazio, é restaurado do local storage.
 
-A logo e o link do carrinho possuem efeito de hover diminuindo a opacidade, o link da página de produtos altera sua cor.
+A logo e o link do carrinho possuem efeito de hover diminuindo a opacidade, o link da página de produtos 
+altera sua cor.
 
-O tamanho relativo das colunas são alterados de acordo com o tamanho do viewport para adequar uma melhor visualização.
+O tamanho relativo das colunas são alterados de acordo com o tamanho do viewport para adequar uma melhor 
+visualização.
 ```
 FooterComponent.vue
 ```
@@ -24,15 +30,22 @@ CSF de rodapé, contendo a logo monocromática cinza.
 ```
 BannerPreview.vue
 ```
-CSF de visualização de um banner, recebe um objeto com dados do texto a ser exibido, do alinhamento do text, das cores do gradiente do background e o peso da fonte do texto.
+CSF de visualização de um banner, recebe um objeto com dados do texto a ser exibido, do alinhamento do text, 
+das cores do gradiente do background e o peso da fonte do texto.
 ```
 RotatingBanner.vue
 ```
-CSF de banner rotativo, que instância o BannerPreview enviando as propriedades que o banner a ser exibido deve conter, renderiza uma lista de pontos para alterar o banner a ser exibido de acordo com o número de banners disponíveis com a condição de não estar ativo, o banner ativo tem o respetivo ponto indicado pela cor não realizando nenhuma ação ao ser selecionado.
+CSF de banner rotativo, que instância o BannerPreview enviando as propriedades que o banner a ser exibido deve 
+conter, renderiza uma lista de pontos para alterar o banner a ser exibido de acordo com o número de banners 
+disponíveis com a condição de não estar ativo, o banner ativo tem o respetivo ponto indicado pela cor não 
+realizando nenhuma ação ao ser selecionado.
 
-Os dados dos banners disponíveis estão atualmente declarados neste componente, podendo ser alterado para consumir alguma api que busque tais dados.
+Os dados dos banners disponíveis estão atualmente declarados neste componente, podendo ser alterado para 
+consumir alguma api que busque tais dados.
 
-Na montagem deste componente é iniciado uma função temporizadora que troca o banner a ser exibido a cada 4000 milisegundos, o identificador da função temporizadora é guardado para posteriormente ser realizado a limpeza, antes de ser destruido o componente usa o identificador para parar a função temporizadora.
+Na montagem deste componente é iniciado uma função temporizadora que troca o banner a ser exibido a cada 
+4000 milisegundos, o identificador da função temporizadora é guardado para posteriormente ser realizado a 
+limpeza, antes de ser destruido o componente usa o identificador para parar a função temporizadora.
 
 Os indicadores possuem hover de opacidade.
 
@@ -40,22 +53,30 @@ Obs: O banner rotativo poderia mas não foi implementado usando os recursos do b
 ```
 SearchBar.vue
 ```
-CSF de uma barra de pesquisa, pode ser utilizado após digitar um termo/texto com o evento de click no botão com o ícone de lupa ou pressionando enter com foco no input de texto. Ao usar atualiza o estado de termo de pesquisa que é usado posteriormente para filtrar.
+CSF de uma barra de pesquisa, pode ser utilizado após digitar um termo/texto com o evento de click no botão 
+com o ícone de lupa ou pressionando enter com foco no input de texto. Ao usar atualiza o estado de termo de 
+pesquisa que é usado posteriormente para filtrar.
 ```
 ProductPreview.vue
 ```
-CSF de um produto a ser visualizado, recebe um objeto com os dados do produto: uri da imagem, nome do produto, categoria, descrição e preço (que é convertido para o formato localizado do brasil). Exibe uma caixa com os dados do produto com um botão que adiciona o produto ao carrinho.
+CSF de um produto a ser visualizado, recebe um objeto com os dados do produto: uri da imagem, nome do produto, 
+categoria, descrição e preço (que é convertido para o formato localizado do brasil). Exibe uma caixa com os 
+dados do produto com um botão que adiciona o produto ao carrinho.
 
 A caixa possui hover que expande o conteúdo da imagem com efeito de zoom de progressão lenta.
 ```
 
 ProductGrid.vue
 ```
-CSF que recebe uma lista de produtos e instância ProducPreview para cada item da lista. O tamanho relativo das colunas são alterados dependendo do tamanho do viewport
+CSF que recebe uma lista de produtos e instância ProducPreview para cada item da lista. O tamanho relativo das 
+colunas são alterados dependendo do tamanho do viewport
 ```
 Index.vue
 ```
-CSF de página da página inicial(de produtos) que instância os componentes: Header, RotatingBanner, SearchBar, ProductGrid e Footer. Faz requisição para a api que fornece a lista de produtos, e é computado o estado do termo de pesquisa que é usado para filtrar quais produtos devem ser enviados para o grid de produtos (ignorando case-sensitive).
+CSF de página da página inicial(de produtos) que instância os componentes: Header, RotatingBanner, SearchBar, 
+ProductGrid e Footer. Faz requisição para a api que fornece a lista de produtos, e é computado o estado do 
+termo de pesquisa que é usado para filtrar quais produtos devem ser enviados para o grid de produtos (ignorando 
+case-sensitive).
 ```
 EmptyCart
 ```
@@ -63,25 +84,41 @@ CSF de um preenchimento da página do carrinho amigável ao usuário que é exib
 ```
 CartItems.vue
 ```
-CSF da lista de items adicionados ao carrinho, computa o estado de items do carrinho e preço total do carrinho. Renderiza condicionalmente EmptyCart caso tamanho do estado de items do carrinho seja 0. Constroi uma tabela usando grid, cada item do carrinho é representado por uma linha com seus dados e a soma do preço por quantidade daquele item, possuindo controlador de quantidade(caso alcance 0 o item é excluido do carrinho), um botão de remoção de item, e um botão para remover todos os items. No final é exibido o cálculo do total do carrinho e botões para continuar as compras ou finalizar que redireciona para a página de checkout.
+CSF da lista de items adicionados ao carrinho, computa o estado de items do carrinho e preço total do carrinho. 
+Renderiza condicionalmente EmptyCart caso tamanho do estado de items do carrinho seja 0. Constroi uma tabela 
+usando grid, cada item do carrinho é representado por uma linha com seus dados e a soma do preço por quantidade 
+daquele item, possuindo controlador de quantidade(caso alcance 0 o item é excluido do carrinho), um botão de 
+remoção de item, e um botão para remover todos os items. No final é exibido o cálculo do total do carrinho e 
+botões para continuar as compras ou finalizar que redireciona para a página de checkout.
 ```
 shoppingCart.vue
 ```
-CSF da página do carrinho de compras, que instância o cabeçalho, rodapé e o componente da lista de items do carrinho.
+CSF da página do carrinho de compras, que instância o cabeçalho, rodapé e o componente da lista de items do 
+carrinho.
 ```
 CheckoutForm.vue
 ```
-CSF do formulário para preenchimento dos dados do usuário na finalização da compra, possui máscaras de cep, cpf, data de nascimento, telefone e estado. Neste componente há um observador que quando o cep é preeenchido totalmente é chamado um método que o valida, em caso inválido é disparado um alerta, no contrário será preenchido os campos: Endereço, Complemento, Bairro, Cidade e Estado com os dados retornados pela api "viacep". É utilizado um método no submit do formulário que previne o comportamento padrão, e então valida se os campos obrigatorios estão preenchidos, se o e-mail está no formato correto, caso haja algum problema é renderizado um elemento contendo uma lista de erros a serem corrigidos. Caso contrário é chamado o componente de modal de sucesso.
+CSF do formulário para preenchimento dos dados do usuário na finalização da compra, possui máscaras de cep, 
+cpf, data de nascimento, telefone e estado. Neste componente há um observador que quando o cep é preeenchido 
+totalmente é chamado um método que o valida, em caso inválido é disparado um alerta, no contrário será 
+preenchido os campos: Endereço, Complemento, Bairro, Cidade e Estado com os dados retornados pela api "viacep".
+É utilizado um método no submit do formulário que previne o comportamento padrão, e então valida se os campos 
+obrigatorios estão preenchidos, se o e-mail está no formato correto, caso haja algum problema é renderizado um 
+elemento contendo uma lista de erros a serem corrigidos. Caso contrário é chamado o componente de modal de 
+sucesso.
 
 O tamanho relativo das colunas são alterados de acordo com o tamanho do viewport para melhor visualização.
 ```
 SuccessModal
 ```
-CSF de um modal de sucesso que recebe uma string que é utilizado como mensagem principal, possui um botão X para fechar o modal, um ícone de sucesso, e um link para voltar para página inicial(de produtos).
+CSF de um modal de sucesso que recebe uma string que é utilizado como mensagem principal, possui um botão X 
+para fechar o modal, um ícone de sucesso, e um link para voltar para página inicial(de produtos).
 ```
 CheckoutPage.vue
 ```
-CSF da página de checkout que instância o cabeçalho, o rodapé, o formulário e renderiza condicionalmente o modal de sucesso. Quando este componente é criado, é verificado se o carrinho possui algum item adicionado, e se não tem o usuário é redirecionado para a página de produtos.
+CSF da página de checkout que instância o cabeçalho, o rodapé, o formulário e renderiza condicionalmente o 
+modal de sucesso. Quando este componente é criado, é verificado se o carrinho possui algum item adicionado, 
+e se não tem o usuário é redirecionado para a página de produtos.
 ```
 
 ## Models
@@ -93,16 +130,22 @@ Interface que define as propriedades de um produto: id, name, categoria, descri�
 
 shop/cart.js
 ```
-Store referente ao carrinho de compras, possui getters que retornam a quantidade total de items no carrinho (usado para atualizar o ícone no menu) e que retorna o preço total do carrinho. Mutations para adicionar um item ao carrinho, remover um item, subtrair um item do carrinho, remover todos os items e restaurar do local storage. State da lista de items do carrinho.
+Store referente ao carrinho de compras, possui getters que retornam a quantidade total de items no carrinho 
+(usado para atualizar o ícone no menu) e que retorna o preço total do carrinho. Mutations para adicionar um 
+item ao carrinho, remover um item, subtrair um item do carrinho, remover todos os items e restaurar do local 
+storage. State da lista de items do carrinho.
 ```
 shop/inputs.js
 ```
-Store referente aos dados de entrada da loja. Possui mutations para definir o termo pesquisado, para mover o banner rotativo para o próximo banner, e para mudar o banner rotativo para um banner específico. State do termo pesquisado e da posição do banner rotativo.
+Store referente aos dados de entrada da loja. Possui mutations para definir o termo pesquisado, para mover o 
+banner rotativo para o próximo banner, e para mudar o banner rotativo para um banner específico. State do termo 
+pesquisado e da posição do banner rotativo.
 ```
 
 shop/checkout.js
 ```
-Store referente a parte de checkout. Possui mutations para abrir e fechar o modal de sucesso e state para controlar a renderização do modal.
+Store referente a parte de checkout. Possui mutations para abrir e fechar o modal de sucesso e state para 
+controlar a renderização do modal.
 ```
 
 ## Detalhes de implementação
