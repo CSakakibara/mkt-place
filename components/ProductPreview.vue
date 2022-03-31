@@ -43,6 +43,7 @@ export default Vue.extend({
 article {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
+
   figure {
     height: 25rem;
     background-position: center;
@@ -77,12 +78,24 @@ article {
       line-height: 1.7rem;
       max-height: 5.5rem;
       overflow-y: scroll;
-      text-overflow: ellipsis;
+
       &::-webkit-scrollbar {
-        display: none;
+        width: 0.2rem;
       }
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 1rem;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 1rem;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
     }
 
     .price {
