@@ -55,8 +55,8 @@ Os dados dos banners disponíveis estão atualmente declarados neste componente,
 alterado para consumir alguma api que busque tais dados.
 
 Na montagem deste componente é iniciado uma função temporizadora que troca o banner a ser exibido
-a cada 4000 milisegundos, o identificador da função temporizadora é guardado para posteriormente
-ser realizado a limpeza, antes de ser destruido o componente usa o identificador para parar a
+a cada 4000 milissegundos, o identificador da função temporizadora é guardado para posteriormente
+ser realizado a limpeza, antes de ser destruído o componente usa o identificador para parar a
 função temporizadora.
 
 Os indicadores possuem hover de opacidade.
@@ -87,7 +87,7 @@ lenta.
 ProductGrid.vue
 
 ```
-CSF que recebe uma lista de produtos e instância ProducPreview para cada item da lista. O
+CSF que recebe uma lista de produtos e instância ProductPreview para cada item da lista. O
 tamanho relativo das colunas são alterados dependendo do tamanho do viewport
 ```
 
@@ -112,9 +112,9 @@ CartItems.vue
 ```
 CSF da lista de items adicionados ao carrinho, computa o estado de items do carrinho e
 preço total do carrinho. Renderiza condicionalmente EmptyCart caso tamanho do estado de
-items do carrinho seja 0. Constroi uma tabela usando grid, cada item do carrinho é
+items do carrinho seja 0. Constrói uma tabela usando grid, cada item do carrinho é
 representado por uma linha com seus dados e a soma do preço por quantidade daquele item,
-possuindo controlador de quantidade(caso alcance 0 o item é excluido do carrinho), um
+possuindo controlador de quantidade(caso alcance 0 o item é excluído do carrinho), um
 botão de remoção de item, e um botão para remover todos os items. No final é exibido o
 cálculo do total do carrinho e botões para continuar as compras ou finalizar que
 redireciona para a página de checkout.
@@ -132,11 +132,11 @@ CheckoutForm.vue
 ```
 CSF do formulário para preenchimento dos dados do usuário na finalização da compra, possui
 máscaras de cep, cpf, data de nascimento, telefone e estado. Neste componente há um
-observador que quando o cep é preeenchido totalmente é chamado um método que o valida, em
+observador que quando o cep é preenchido totalmente é chamado um método que o valida, em
 caso inválido é disparado um alerta, no contrário será preenchido os campos: Endereço,
 Complemento, Bairro, Cidade e Estado com os dados retornados pela api "viacep".É utilizado
 um método no submit do formulário que previne o comportamento padrão, e então valida se os
-campos obrigatorios estão preenchidos, se o e-mail está no formato correto, caso haja algum
+campos obrigatórios estão preenchidos, se o e-mail está no formato correto, caso haja algum
 problema é renderizado um elemento contendo uma lista de erros a serem corrigidos. Caso
 contrário é chamado o componente de modal de sucesso.
 
@@ -200,7 +200,7 @@ sucesso e state para controlar a renderização do modal.
 
 ## Detalhes de implementação
 
-Foi utilizado o padrão de formatação de código do eslint e pretier.
+Foi utilizado o padrão de formatação de código do eslint e prettier.
 
 ## Build Setup
 

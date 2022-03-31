@@ -3,14 +3,14 @@
     <EmptyCart v-if="!cartItems.length" />
     <main v-else class="container cart-table">
       <div class="row table-headers">
-        <div class="col-2 products-header">produtos</div>
-        <div class="col-2 offset-1">quantidade</div>
-        <div class="col-2 offset-1">valor unitário</div>
-        <div class="col-2 offset-2">total</div>
+        <div class="col-xl-2 col-sm-3 products-header">produtos</div>
+        <div class="col-xl-2 offset-xl-1 col-sm-3">quantidade</div>
+        <div class="col-xl-2 offset-xl-1 col-sm-3">valor unitário</div>
+        <div class="col-xl-2 offset-xl-2 col-sm-3">total</div>
       </div>
       <ul>
         <li v-for="item in cartItems" :key="item.id" class="row cart-item">
-          <div class="col-2 products-col">
+          <div class="col-xl-2 col-lg-3 col-md-3 products-col">
             <button
               class="remove-button"
               type="button"
@@ -23,7 +23,7 @@
               <span>{{ item.name }}</span>
             </div>
           </div>
-          <div class="col-2 offset-1">
+          <div class="col-xl-2 offset-xl-1 col-lg-3 col-md-3">
             <div class="quantity-controller">
               <button class="minus" type="button" @click="subtractItem(item)">
                 -</button
@@ -35,7 +35,7 @@
               </button>
             </div>
           </div>
-          <div class="col-2 offset-1">
+          <div class="col-xl-2 offset-xl-1 col-lg-3 col-md-3">
             <span>
               {{
                 item.price.toLocaleString('pt-br', {
@@ -53,7 +53,7 @@
               }}</span
             >
           </div>
-          <div class="col-2 offset-2">
+          <div class="col-xl-2 offset-xl-2 col-lg-3 col-md-3">
             <span>
               {{
                 (item.price * item.quantity).toLocaleString('pt-br', {
@@ -112,15 +112,15 @@
         >
       </div>
       <div class="buttons-container row">
-        <div class="col-2">
+        <div class="col-xl-2 col-lg-3">
           <button class="clean" type="button" @click="removeAll()">
             <img src="/trash-icon.svg" alt="Ícone de lixeira" />Limpar carrinho
           </button>
         </div>
-        <NuxtLink to="/" class="col-3 offset-4">
+        <NuxtLink to="/" class="col-xl-3 offset-xl-4 col-lg-3 offset-lg-3">
           <button class="back" type="button">Continuar comprando</button>
         </NuxtLink>
-        <NuxtLink to="/checkoutPage" class="col-3">
+        <NuxtLink to="/checkoutPage" class="col-xl-3 col-lg-3">
           <button class="checkout" type="button">Concluir compra</button>
         </NuxtLink>
       </div>
@@ -264,6 +264,24 @@ button {
       background: var(--contrast-color);
       color: var(--back-color);
     }
+  }
+}
+@media only screen and (max-width: 770px) {
+  .table-headers {
+    .offset-xl-1,
+    .offset-xl-2 {
+      display: none;
+    }
+  }
+  .products-col {
+    justify-content: start;
+    gap: 3rem;
+  }
+  .products-label {
+    gap: 0;
+  }
+  .quantity-controller {
+    margin-left: 4.5rem;
   }
 }
 </style>
