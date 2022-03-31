@@ -32,6 +32,9 @@ export default Vue.extend({
   props: {
     message: { type: String, required: true },
   },
+  beforeDestroy() {
+    this.closeSuccess()
+  },
   methods: {
     ...mapMutations({
       closeSuccess: 'shop/checkout/closeSuccess',

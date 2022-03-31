@@ -8,7 +8,7 @@
         <div class="col-xl-2 offset-xl-1 col-sm-3">valor unitário</div>
         <div class="col-xl-2 offset-xl-2 col-sm-3">total</div>
       </div>
-      <ul>
+      <ul class="container">
         <li v-for="item in cartItems" :key="item.id" class="row cart-item">
           <div class="col-xl-2 col-lg-3 col-md-3 products-col">
             <button
@@ -111,7 +111,7 @@
           </p></span
         >
       </div>
-      <div class="buttons-container row">
+      <div class="buttons-container container row">
         <div class="col-xl-2 col-lg-3">
           <button class="clean" type="button" @click="removeAll()">
             <img src="/trash-icon.svg" alt="Ícone de lixeira" />Limpar carrinho
@@ -229,6 +229,9 @@ button {
     padding-bottom: 4rem;
     p {
       margin: 0;
+    }
+    span {
+      padding-right: 0;
     }
   }
   .total-value {

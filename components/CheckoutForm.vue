@@ -194,7 +194,8 @@ export default Vue.extend({
   },
   methods: {
     ...mapMutations({
-      openSuccess: 'shop/checkout/openSuccess'
+      openSuccess: 'shop/checkout/openSuccess',
+      removeAll: 'shop/cart/removeAll',
     }),
     checkForm(event: Event) {
       event.preventDefault()
@@ -204,6 +205,8 @@ export default Vue.extend({
       }
       if (!this.postal) {
         this.errors.push('CEP é obrigatório.')
+      }else if(!this.response){
+        this.errors.push('CEP inválido.')
       }
       if (!this.email) {
         this.errors.push('E-mail é obrigatório.')
@@ -237,6 +240,7 @@ export default Vue.extend({
 
       if (!this.errors.length) {
         this.openSuccess()
+        this.removeAll()
       }
     },
     validEmail(email: string) {
