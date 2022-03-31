@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="row" action="">
+    <form class="row" novalidate="true" @submit="checkForm">
       <div class="field col-6">
         <label class="label" for="name">Nome*</label>
         <input id="name" v-model="name" class="input" type="text" name="name" />
@@ -13,6 +13,7 @@
           class="input"
           type="text"
           name="postal"
+          maxlength="9"
         />
       </div>
       <div class="field col-6">
@@ -41,16 +42,22 @@
           id="number"
           v-model="number"
           class="input"
-          type="number"
+          type="text"
           name="number"
         />
       </div>
       <div class="field col-6">
         <label class="label" for="cpf">CPF*</label>
-        <input id="cpf" v-model="cpf" class="input" type="text" name="cpf" />
+        <input
+          id="cpf"
+          v-model="cpf"
+          class="input"
+          type="text"
+          name="cpf"
+        />
       </div>
       <div class="field col-3">
-        <label class="label" for="cpf">Complemento</label>
+        <label class="label" for="complement">Complemento</label>
         <input
           id="complement"
           v-model="complement"
@@ -81,7 +88,7 @@
         />
       </div>
       <div class="field col-3">
-        <label class="label" for="district">Telefone*</label>
+        <label class="label" for="phone">Telefone*</label>
         <input
           id="phone"
           v-model="phone"
@@ -91,42 +98,167 @@
         />
       </div>
       <div class="field col-4">
-        <label class="label" for="district">Cidade*</label>
+        <label class="label" for="city">Cidade*</label>
         <input id="city" v-model="city" class="input" type="text" name="city" />
       </div>
       <div class="field col-2">
-        <label class="label" for="district">Estado*</label>
+        <label class="label" for="state">Estado*</label>
         <input
           id="state"
           v-model="state"
           class="input"
           type="text"
           name="state"
+          maxlength="2"
+          @input="
+            () => {
+              state = state.toUpperCase()
+            }
+          "
         />
       </div>
       <div class="col-4 offset-8 button-container">
-        <button class="" type="button">Concluir Compra</button>
+        <button type="submit">Concluir Compra</button>
       </div>
     </form>
+    <p v-if="errors.length" class="errors">
+      <b>Por favor corrija o(s) seguinte(s) erro(s):</b>
+      <ul>
+        <li v-for="error in errors" :key="error">{{ error }}</li>
+      </ul>
+    </p>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import {mapMutations} from 'vuex'
+const baseUrl= 'https://viacep.com.br/ws/'
 export default Vue.extend({
   data() {
     return {
-      errors: [],
-      name: null,
-      email: null,
-      postal: null,
+      errors: [] as string[],
+      name: '',
+      postal: '',
+      email: '',
+      address: '',
+      number: '',
+      cpf: '',
+      complement: '',
+      district: '',
+      birthday: '',
+      phone: '',
+      city: '',
+      state: '',
+      response:null,
+    }
+  },
+  watch:{
+    postal(newPostal){
+      this.postal = newPostal
+        .replace(/\D/g, '')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .replace(/(-\d{3})\d+?$/, '$1')
+      if(newPostal.length ===9){
+        this.getFromCep()
+        return
+      }
+      this.response = null
+    },
+    response(newResponse, oldResponse){
+      if(!newResponse) return
+      if(newResponse === oldResponse) return
+      this.address = newResponse.logradouro
+      this.district = newResponse.bairro
+      this.city = newResponse.localidade
+      this.state = newResponse.uf
+    },
+    cpf (newCpf) {
+      this.cpf = newCpf.replace(/\D/g, '')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d{1,2})/, '$1-$2')
+        .replace(/(-\d{2})\d+?$/, '$1')
+    },
+    birthday(newBirthday){
+      this.birthday = newBirthday.replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '$1/$2')
+        .replace(/(\d{2})(\d)/, '$1/$2')
+        .replace(/(\d{2})\d+?$/, '$1')
+    },
+    phone(newPhone){
+      this.phone = newPhone.replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1)$2')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .replace(/(-\d{4})\d+?$/, '$1')
     }
   },
   methods: {
-    checkForm() {
+    ...mapMutations({
+      openSuccess: 'shop/checkout/openSuccess'
+    }),
+    checkForm(event: Event) {
+      event.preventDefault()
       this.errors = []
+      if (!this.name) {
+        this.errors.push('Nome é obrigatório.')
+      }
+      if (!this.postal) {
+        this.errors.push('CEP é obrigatório.')
+      }
+      if (!this.email) {
+        this.errors.push('E-mail é obrigatório.')
+      } else if (!this.validEmail(this.email)) {
+        this.errors.push('E-mail inválido.')
+      }
+      if (!this.address) {
+        this.errors.push('Endereço é obrigatório.')
+      }
+      if (!this.number) {
+        this.errors.push('Número é obrigatório.')
+      }
+      if (!this.cpf) {
+        this.errors.push('CPF é obrigatório.')
+      }
+      if (!this.district) {
+        this.errors.push('Bairro é obrigatório.')
+      }
+      if (!this.birthday) {
+        this.errors.push('Data de Nascimento é obrigatório.')
+      }
+      if (!this.phone) {
+        this.errors.push('Telefone é obrigatório.')
+      }
+      if (!this.city) {
+        this.errors.push('Cidade é obrigatório.')
+      }
+      if (!this.state) {
+        this.errors.push('Estado é obrigatório.')
+      }
+
+      if (!this.errors.length) {
+        this.openSuccess()
+      }
     },
+    validEmail(email: string) {
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(email)
+    },
+    getFromCep(){
+      const uri = `${baseUrl}${this.postal}/json/`
+      this.$axios.$get(uri).then( axiosResponse =>{
+        if(!axiosResponse.erro){
+          this.response = axiosResponse
+          return
+        }
+        alert("Cep inválido")
+      }).catch(error => {
+        alert(error)
+      })
+    }
   },
+
 })
 </script>
 
@@ -162,5 +294,9 @@ form {
       color: var(--back-color);
     }
   }
+}
+.errors{
+  color:red;
+  font-size: 1.6rem;
 }
 </style>

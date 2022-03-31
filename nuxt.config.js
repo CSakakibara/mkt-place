@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'mkt-place',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'pt-BR',
     },
     meta: [
       { charset: 'utf-8' },
@@ -45,4 +45,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // Environment
 }

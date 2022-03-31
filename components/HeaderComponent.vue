@@ -32,10 +32,30 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
+import { Product } from '@/models'
 export default Vue.extend({
   computed: {
     ...mapGetters({ totalQuantity: 'shop/cart/totalQuantity' }),
+    cartItems(): Array<Product> {
+      return this.$store.state.shop.cart.cartItems
+    },
+  },
+  watch: {
+    cartItems: {
+      handler(newCart) {
+        localStorage.setItem('cartItems', JSON.stringify(newCart))
+      },
+      deep: true,
+    },
+  },
+  mounted() {
+    if (!this.cartItems.length) this.restore()
+  },
+  methods: {
+    ...mapMutations({
+      restore: 'shop/cart/restore',
+    }),
   },
 })
 </script>
