@@ -52,9 +52,6 @@ export default {
     manifest: {
       theme_color: '#ffffff',
     },
-    icon: {
-      purpose: 'maskable',
-    },
     description: 'Simple e-commerce page',
   },
 
